@@ -45,7 +45,7 @@ namespace Engine.WinForms
             for (int i = 0; i <= longest; i++)
             {
                 if (b.Width > x && b.Height > y && x >= 0 && y >= 0)
-                    b.SetPixel(x, y, Color.Black);
+                    b.SetPixel(x, y, Color.White);
                 numerator += shortest;
                 if (!(numerator < longest))
                 {

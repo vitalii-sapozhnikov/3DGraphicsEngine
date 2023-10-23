@@ -12,9 +12,7 @@ namespace Engine.WinForms
 {
     public partial class Form1 : Form
     {
-        private string teapotPath = Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory)).FullName).FullName + @"\Files\teapot.off";
-        private string mushroomPath = Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory)).FullName).FullName + @"\Files\mushroom_triang.off";
-        private string cubePath = Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory)).FullName).FullName + @"\Files\cube.off";
+        private string _cubePath = Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory)).FullName).FullName + @"\Files\cube.off";
 
         private List<Vector3> vertices;
         private List<Face> faces;
@@ -64,7 +62,7 @@ namespace Engine.WinForms
 
             //loadFile(mushroomPath, "mushroom_triang.off");
             //loadFile(teapotPath, "teapot.off");
-            loadFile(cubePath, "cube.off");
+            loadFile(_cubePath, "cube.off");
         }
 
         private void CalculatePoints()
@@ -144,7 +142,7 @@ namespace Engine.WinForms
             if (drawFacesCheckBox.Checked && drawFogCheckBox.Checked)
                 g.Clear(fogColor);
             else
-                g.Clear(Color.White);
+                g.Clear(Color.Black);
             if (drawFacesCheckBox.Checked)
             {
                 if (transparentFacesCheckBox.Checked)
@@ -197,7 +195,7 @@ namespace Engine.WinForms
                 foreach (PointF p in points) //draw points
                 {
                     if (p.X >= 0 && p.X < b.Width && p.Y >= 0 && p.Y < b.Height)
-                        b.SetPixel((int)p.X, (int)p.Y, Color.Black);
+                        b.SetPixel((int)p.X, (int)p.Y, Color.White);
                 }
             }
             if (drawEdgesCheckBox.Checked)
